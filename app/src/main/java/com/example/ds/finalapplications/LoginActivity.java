@@ -28,6 +28,13 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		if(!DsObjectUtils.getInstance(getApplicationContext()).isEmpty(new SharedPreference().getSharedPreference(getApplicationContext(), "md_uid"))){
+			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+			startActivity(intent);
+			overridePendingTransition(0,0);
+			finish();
+		}
+
 		mDsObjectUtils = DsObjectUtils.getInstance(getApplicationContext());
 		setContentView(R.layout.login);
 		mEditTextId = (EditText)findViewById(R.id.editText_id);
@@ -55,7 +62,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 							new SharedPreference().putSharedPreference(getApplicationContext(), "md_uid", mData.get(mData.size()-1).getMd_uid());
 							
 							Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-							intent.putExtra("data", mData.get(mData.size()-1));
 							startActivity(intent);
 							overridePendingTransition(0,0);
 							finish();

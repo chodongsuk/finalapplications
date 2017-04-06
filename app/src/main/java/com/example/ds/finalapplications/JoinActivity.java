@@ -9,7 +9,6 @@ import kr.ds.data.DataHandler;
 import kr.ds.data.IdCheckData;
 import kr.ds.utils.DsObjectUtils;
 import kr.ds.utils.SharedPreference;
-import kr.ds.utils.StringUtils;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -87,7 +86,6 @@ public class JoinActivity extends BaseActivity implements OnClickListener{
 								new SharedPreference().putSharedPreference(getApplicationContext(), "md_uid", mData.get(mData.size()-1).getMd_uid());
 
 								Intent intent = new Intent(JoinActivity.this, MainActivity.class);
-								intent.putExtra("data", mData.get(mData.size()-1));
 								startActivity(intent);
 								overridePendingTransition(0,0);
 								finish();
